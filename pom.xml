@@ -166,32 +166,26 @@
 	</dependencies>
 	<build>
 		<finalName>>${project.artifactId}</finalName>
-<!-- 		<plugins>
+		<plugins>
 			<plugin>
-				<groupId>com.jelastic</groupId>
-				<artifactId>jelastic-maven-plugin</artifactId>
-				<version>1.8.2</version>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
 				<configuration>
-					<email>zalai1992@gmail.com</email>
-					<password>0978453326</password>
-					<context>[specify the context if you need it]</context>
-					<environment>mypham</environment>
-					<comment>app.kilatiron.com</comment>
-			
-					<api_hoster>app.kilatiron.com</api_hoster>
+					<outputDirectory>deployments</outputDirectory>
+					<warName>ROOT</warName>
 				</configuration>
 			</plugin>
-		</plugins> -->
+		</plugins>
 			
-	 	<plugins>
+<!-- 	 	<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
-				<!-- Config: contextPath and Port (Default: /HelloSpringMVC : 8080) -->
-				<!-- <configuration> <path>/</path> <port>8899</port> </configuration> -->
+				Config: contextPath and Port (Default: /HelloSpringMVC : 8080)
+				<configuration> <path>/</path> <port>8899</port> </configuration>
 				<configuration> <port>8899</port> <uriEncoding>UTF-8</uriEncoding></configuration>
 			</plugin>
-		</plugins>
+		</plugins> -->
 	</build>
 </project>
