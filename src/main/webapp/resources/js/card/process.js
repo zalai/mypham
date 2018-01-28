@@ -164,20 +164,25 @@ $(document).ready(function() {
 			success : function(data) {
 
 				console.log(data.result);
-				var productSize = Object.keys(data.result.products).length;
 
-				if (productSize > 0) {
+				// Check return data is not null
+				if (data.result != null) {
 
-					showProductSize(data);
+					var productSize = Object.keys(data.result.products).length;
 
-					// Show card infor
-					var templateSource = $("#checkout-product-template").html();
+					if (productSize > 0) {
 
-					template = Handlebars.compile(templateSource);
-					productHtml = template(data);
+						showProductSize(data);
 
-					$('#checkout-product').html(productHtml);
-					$('#checkout-product').modal();
+						// Show card infor
+						var templateSource = $("#checkout-product-template").html();
+
+						template = Handlebars.compile(templateSource);
+						productHtml = template(data);
+
+						$('#checkout-product').html(productHtml);
+						$('#checkout-product').modal();
+					}
 				}
 			},
 			error : function(e) {
