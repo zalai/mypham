@@ -1,0 +1,47 @@
+
+/*Table for checkout card*/
+.table-fixed {
+
+	width: 100%;
+	font-size: 12px;
+}
+	.table-fixed tbody {
+		max-height : 200px;
+		overflow-y: auto;
+		width: 100%;
+	}
+
+	.table-fixed thead, tbody, tr, td, th {
+		display: block;
+	}
+
+	.table-fixed tbody td {
+		float:left;
+	}
+
+	.table-fixed thead tr th {
+		float:left;
+		background-color: #fafafa;
+		border-color: #e67e22;
+	}
+
+.checkout-card {
+	font-size: 13px;
+}
+
+	.checkout-card .form-control {
+		font-size: 13px;
+	}
+
+.card-total {
+	border-top: 1px solid #b3b3b3;
+	padding: 9px 0px 9px 0px;
+}
+
+	.card-total .row {
+		padding-left: 8px;
+	}
+
+	.card-total .text-danger {
+		font-size: 14px;
+	}
