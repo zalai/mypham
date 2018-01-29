@@ -1,11 +1,15 @@
 package model;
 
 import java.util.Date;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -14,7 +18,8 @@ import javax.persistence.TemporalType;
 @Table(name = "order", catalog = "mypham")
 public class RstOrderDto implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 612583338934047873L;
+
 	private Integer orderId;
 	private String name;
 	private String email;
@@ -22,17 +27,7 @@ public class RstOrderDto implements java.io.Serializable {
 	private String phone;
 	private String totalPrice;
 	private Date orderDate;
-	public RstOrderDto() {
-	}
-
-	public RstOrderDto(String name, String email, String adress, String phone, String totalPrice, Date orderDate) {
-		this.name = name;
-		this.email = email;
-		this.adress = adress;
-		this.phone = phone;
-		this.totalPrice = totalPrice;
-		this.orderDate = orderDate;
-	}
+	private Set<RstOrderDetailDetail> orderDetailDtos;
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -99,6 +94,15 @@ public class RstOrderDto implements java.io.Serializable {
 
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orderDto")
+	public Set<RstOrderDetailDetail> getOrderDetailDtos() {
+		return orderDetailDtos;
+	}
+
+	public void setOrderDetailDtos(Set<RstOrderDetailDetail> orderDetailDtos) {
+		this.orderDetailDtos = orderDetailDtos;
 	}
 
 }

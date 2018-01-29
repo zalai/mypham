@@ -71,10 +71,11 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="pull-righ">
-						<button class="btn btn-warning">Tiếp tục mua hàng</button>
-						<button class="btn btn-warning">Thanh toán</button>
+					<div class="float-right">
+						<button class="btn btn-warning" data-dismiss="modal">Tiếp tục mua hàng</button>
+						<a class="btn btn-warning" href="order">Thanh toán</a>
 					</div>
+					<div class="clear"></div>
 				{{else}}
 					<h4>Không có mặt hàng nào trong giỏ</h4>
 				{{/ifCond}}

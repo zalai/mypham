@@ -38,7 +38,7 @@
 			<div class="col-md-2 text-right">
 				<div class="search">
 					<button type="button" class="btn btn-info btn-show-card">
-						Giỏ hàng <span class="badge"><c:out value="${sessionScope.cardItems.products.size()}" /></span>
+						Giỏ hàng <span class="badge"><c:out value="${sessionScope.cardItems.products.size()}" default="0" /></span>
 					</button>
 				</div>
 			</div>

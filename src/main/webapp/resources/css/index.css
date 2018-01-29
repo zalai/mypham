@@ -234,6 +234,10 @@ ul.tabs {
 	clear: both;
 }
 
+.float-right {
+	float: right;
+}
+
 .product{
 	margin-bottom: 20px;
 }
