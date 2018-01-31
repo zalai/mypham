@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" href="resources/css/font-awesome.min.css"/>
 
-<link rel="stylesheet" href="resources/css/index.css"/>
+<link rel="stylesheet" href="<c:url value="resources/css/index.css"></c:url>"/>
 <link rel="stylesheet" href="resources/css/animate.css">
 <link rel="stylesheet" media="all" href="resources/css/media.css">
 

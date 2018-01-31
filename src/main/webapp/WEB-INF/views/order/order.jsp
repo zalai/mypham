@@ -1,27 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@include file="common/commonTaglid.jsp" %>
+<%@include file="../common/commonTaglid.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<jsp:include page="common/css.jsp"></jsp:include>
-	<link rel="stylesheet" href="resources/css/order.css">
-	<link rel="stylesheet" href="resources/css/index.css"/>
+	<jsp:include page="../common/css.jsp"></jsp:include>
+	<link rel="stylesheet" href="${contextPath}/resources/css/order.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/index.css"/>
 
-	<jsp:include page="common/js.jsp"></jsp:include>
+	<jsp:include page="../common/js.jsp"></jsp:include>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Đặt hàng</title>
 </head>
 <body>
-	<%@ include file="./component/breadcrumb.jsp"%>
+
+	<div>
+		<ul class="breadcrumb">
+			<li class="active"><a>Thông tin</a></li>
+			<li><a>Xác nhận</a></li>
+			<li><a>Hoàn tất</a></li>
+		</ul>
+	</div>
+
 	<div class="row checkout-card">
 		<%--Checkout card form --%>
 		<div class="col-md-7 customer-info">
 			<div class="panel panel-default">
 				<div class="panel-heading">Địa chỉ giao hàng của quý khách</div>
 				<div class="panel-body">
-					<form:form class="form-horizontal" method="post" modelAttribute="orderForm" action="${userActionUrl}">
+					<spring:url value="/order/confirm" var="orderConfirm"></spring:url>
+					<form:form class="form-horizontal" method="post" modelAttribute="orderForm" action="${orderConfirm}">
 			
 						<spring:bind path="name">
 							<div class="form-group ${status.error ? 'has-error':''} ">
@@ -89,6 +98,7 @@
 							<div class="col-sm-9">
 								<form:textarea path="address" rows="3" maxlength="255" class="form-control"
 									placeholder="Địa chỉ nhận hàng (tầng, số nhà, đường)"></form:textarea>
+								<form:errors path="address" class="control-label" ></form:errors>
 							</div>
 						</div>
 						</spring:bind>
@@ -99,6 +109,7 @@
 							<div class="col-sm-9">
 								<form:input path="phone" rows="5" class="form-control"
 									placeholder="Số điện thoại"></form:input>
+								<form:errors path="phone" class="control-label" ></form:errors>
 							</div>
 						</div>
 						</spring:bind>
@@ -132,7 +143,9 @@
 							<tr>
 								<td class="col-md-8">${product.value.tenSp}</td>
 								<td class="col-md-2 text-center">${product.value.soLuong}</td>
-								<td class="col-md-2 text-right">${product.value.giaBan}</td>
+								<td class="col-md-2 text-right">
+									<fmt:formatNumber pattern=",###" value="${product.value.giaBan}"></fmt:formatNumber>
+								</td>
 							</tr>
 						</c:forEach>
 						</tbody>
@@ -141,15 +154,21 @@
 					<div class="card-total">
 						<div class="row">
 							<div class="col-md-8">Tạm tính</div>
-							<div class="col-md-4 text-right">${cardItems.totalPrice} VND</div>
+							<div class="col-md-4 text-right">
+								<fmt:formatNumber pattern=",###" value="${cardItems.totalPrice}"></fmt:formatNumber> VND
+							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-8">Phí vận chuyển</div>
-							<div class="col-md-4 text-right">0 VND</div>
+							<div class="col-md-4 text-right">
+								<fmt:formatNumber pattern=",###" value="0"></fmt:formatNumber> VND
+							</div>
 						</div>
 						<div class="row text-danger">
 							<div class="col-md-8">Tổng tiền</div>
-							<div class="col-md-4 text-right">${cardItems.totalPrice} VND</div>
+							<div class="col-md-4 text-right">
+								<fmt:formatNumber pattern=",###" value="${cardItems.totalPrice}"></fmt:formatNumber> VND
+							</div>
 						</div>
 					</div>
 				</div>

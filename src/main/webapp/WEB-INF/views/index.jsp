@@ -6,12 +6,12 @@
 <html>
 <head>
 <jsp:include page="common/css.jsp"></jsp:include>
-<link rel="stylesheet" href="resources/css/index.css"/>
+<link rel="stylesheet" href="${contextPath}/resources/css/index.css"/>
 
 <jsp:include page="common/js.jsp"></jsp:include>
-<script type="text/javascript" src="resources/js/product/handle.js"></script>
-<script type="text/javascript" src="resources/js/product/productDetail.js"></script>
-<script type="text/javascript" src="resources/js/card/process.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/js/product/handle.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/js/product/productDetail.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/js/card/process.js"></script>
 <title>Trang chủ</title>
 </head>
 <body>

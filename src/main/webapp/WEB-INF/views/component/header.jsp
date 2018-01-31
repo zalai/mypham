@@ -18,7 +18,7 @@
 		<div class="row">
 			<div class="col-md-3">
 				<a href="http://banmypham.vn/"> <img
-					src="resources/images/system/logo.png" alt="banmypham.vn">
+					src="${contextPath}/resources/images/system/logo.png" alt="banmypham.vn">
 				</a>
 			</div>
 			<div class="col-md-7">

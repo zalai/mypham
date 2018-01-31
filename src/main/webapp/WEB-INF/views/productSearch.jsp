@@ -3,16 +3,17 @@
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/customTaglib.tld" %>
 
 <%@include file="common/commonTaglid.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<jsp:include page="common/css.jsp"></jsp:include>
-	<link rel="stylesheet" href="resources/css/index.css"/>
-	<link rel="stylesheet" href="resources/css/searchProduct.css"/>
+	<link rel="stylesheet" href="${contextPath}/resources/css/index.css"/>
+	<link rel="stylesheet" href="${contextPath}/resources/css/searchProduct.css"/>
 
 	<jsp:include page="common/js.jsp"></jsp:include>
-	<script type="text/javascript" src="resources/js/product/productDetail.js"></script>
-	<script type="text/javascript" src="resources/js/card/process.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/js/product/productDetail.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/js/card/process.js"></script>
 	<title>Trang chủ</title>
 </head>
 <body>

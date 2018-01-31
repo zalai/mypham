@@ -17,7 +17,7 @@ import service.ProductService;
 
 @Controller
 @RequestMapping(value = "card")
-public class CardAction {
+public class CardAction extends AbstractCardAction{
 
 	@Autowired
 	private ProductService productService;
@@ -30,7 +30,7 @@ public class CardAction {
 
 		AjaxResponseBodyDto response = new AjaxResponseBodyDto();
 
-		cardItems = (CardDto)session.getAttribute("cardItems");
+		cardItems = getCardSession(session);
 
 		response.setResult(cardItems);
 		response.setCode("200");
@@ -49,7 +49,7 @@ public class CardAction {
 
 		if (product != null) {
 
-			cardItems = (CardDto)session.getAttribute("cardItems");
+			cardItems = getCardSession(session);
 
 			// Process add or remove product
 			cardItems = processAddCard(cardItems, product);
@@ -72,7 +72,7 @@ public class CardAction {
 
 		AjaxResponseBodyDto response = new AjaxResponseBodyDto();
 
-		cardItems = (CardDto)session.getAttribute("cardItems");
+		cardItems = getCardSession(session);
 
 		if (cardItems != null) {
 
@@ -91,7 +91,7 @@ public class CardAction {
 
 		AjaxResponseBodyDto response = new AjaxResponseBodyDto();
 
-		cardItems = (CardDto)session.getAttribute("cardItems");
+		cardItems = getCardSession(session);
 
 		if (cardItems != null) {
 

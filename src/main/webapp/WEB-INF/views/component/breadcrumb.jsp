@@ -17,3 +17,13 @@
 		</c:forEach>
 	</ol>
 </c:if>
+<style>
+	/* Bread crum */
+	.breadcrumb {
+		border-bottom: 1px solid #EFF0F5 !important;
+		background: none !important;
+		padding: 8px 3px 6px 2px !important;
+		font-size: 13px;
+		margin-bottom: 0px !important;
+	}
+</style>

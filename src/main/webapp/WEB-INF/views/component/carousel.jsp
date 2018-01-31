@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@include file="../common/commonTaglid.jsp" %>
 <!-- Carousel -->
 <div id="carousel-example-generic" class="carousel slide"
 	data-ride="carousel">
@@ -15,14 +16,14 @@
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img src="resources/images/slider/slide-beauty4.jpg">
+			<img src="${contextPath}/resources/images/slider/slide-beauty4.jpg">
 			<!-- <div class="carousel-caption">...</div> -->
 		</div>
 		<div class="item">
-			<img src="resources/images/slider/slide-beauty5.jpg">
+			<img src="${contextPath}/resources/images/slider/slide-beauty5.jpg">
 		</div>
 		<div class="item">
-			<img src="resources/images/slider/slide-beauty6.jpg">
+			<img src="${contextPath}/resources/images/slider/slide-beauty6.jpg">
 		</div>
 	</div>
 
