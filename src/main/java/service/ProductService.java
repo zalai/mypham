@@ -29,7 +29,7 @@ public class ProductService {
 		// Get all product with productType = ALL
 		if(Constant.PRODUCT_TYPE_ALL.equals(productType)) {
 
-			return productDao.getAllProduct(offset, Constant.NOT_REMOVED);
+			return productDao.getAllProduct(offset, Constant.ACTIVE);
 		}
 
 		return productDao.findByProductType(offset, productType);

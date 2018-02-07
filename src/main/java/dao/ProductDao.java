@@ -2,7 +2,6 @@ package dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.ProjectionList;
@@ -17,8 +16,6 @@ import model.RstProductDto;
 @Component
 public class ProductDao extends AbstractDao<Integer, RstProductDto> {
 
-	private Criteria criteria;
-	private Query query;
 	private ProjectionList projectionList1 = columns("maSp", "tenSp", "moTa", "noiSx", "mauSac", "hinh", "giaBan");
 	
 	public List<RstProductDto> getAllProduct(int offset, boolean isDeleted) {
@@ -46,7 +43,7 @@ public class ProductDao extends AbstractDao<Integer, RstProductDto> {
 				+ " rstProducTypeDto.maLoai DESC, ngayNhap DESC";
 
 		query = createQuery(sql);
-		query.setParameter("isRemove", Constant.NOT_REMOVED);
+		query.setParameter("isRemove", Constant.ACTIVE);
 		query.setParameter("productType", productType);
 
 		settingRecord(query, offset);
@@ -72,7 +69,7 @@ public class ProductDao extends AbstractDao<Integer, RstProductDto> {
 				+ " rstProducTypeDto.maLoai DESC, ngayNhap DESC";
 
 		query = createQuery(sql);
-		query.setParameter("isRemove", Constant.NOT_REMOVED);
+		query.setParameter("isRemove", Constant.ACTIVE);
 		query.setParameter("isPrioritied", isPrioritied);
 
 		return query.list();
@@ -98,7 +95,7 @@ public class ProductDao extends AbstractDao<Integer, RstProductDto> {
 				+ " rstProducTypeDto.maLoai DESC, ngayNhap DESC";
 
 		query = createQuery(sql);
-		query.setParameter("isRemove", Constant.NOT_REMOVED);
+		query.setParameter("isRemove", Constant.ACTIVE);
 		query.setParameter("productName", "%" + productName + "%");
 
 		settingRecord(query, offset);
@@ -111,7 +108,7 @@ public class ProductDao extends AbstractDao<Integer, RstProductDto> {
 
 		criteria = createEntityCriteria();
 		criteria.add(Restrictions.like("tenSp", productName, MatchMode.ANYWHERE));
-		criteria.add(Restrictions.eq("remove", Constant.NOT_REMOVED));
+		criteria.add(Restrictions.eq("remove", Constant.ACTIVE));
 		criteria.setProjection(Projections.rowCount());
 		
 		return (Long)criteria.uniqueResult();

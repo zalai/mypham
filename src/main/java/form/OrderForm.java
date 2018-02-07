@@ -2,35 +2,36 @@ package form;
 
 import java.util.Map;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.util.StringUtils;
 
 import enums.Constant;
 
 public class OrderForm {
 
 
-	@NotNull
+	@NotEmpty
 	private String name;
 
-	@Email(regexp = Constant.PATTERN_EMAIL)
+	@Email(regexp = Constant.EMAIL_PATTERN)
 	private String email;
 
 	@Pattern(regexp = "(\\w*\\d\\w*)")
 	private String address;
 
-	@NotNull
+	@NotEmpty
 	private String province;
 
-	@NotNull
+	@NotEmpty
 	private String district;
 
-	@NotNull
+	@NotEmpty
 	private String village;
 
-	@Pattern(regexp = Constant.PATTERN_PHONE)
+	@Pattern(regexp = Constant.PHONE_PATTERN)
 	private String phone;
 
 	private Map<String, String> provinceList;;

@@ -7,7 +7,7 @@ import jsonView.Views;
 public class AjaxResponseBodyDto {
 
 	@JsonView(Views.Public.class)
-	String code;
+	int code;
 
 	@JsonView(Views.Public.class)
 	Object result;
@@ -20,11 +20,11 @@ public class AjaxResponseBodyDto {
 		this.result = result;
 	}
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 

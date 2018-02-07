@@ -21,7 +21,7 @@
 	<div class="collapse navbar-collapse"
 		id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-			<li><a href="<spring:url value="/index"></spring:url>">Trang chủ<span class="sr-only">(current)</span></a></li>
+			<li><a href="${contextPath}">Trang chủ<span class="sr-only">(current)</span></a></li>
 			<li><a href="#">Xịt toàn thân nam</a></li>
 			<li><a href="#">Phụ kiện trạng điêm</a></li>
 			<li><a href="#">Làm đẹp</a></li>

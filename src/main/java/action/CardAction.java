@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ public class CardAction extends AbstractCardAction{
 		cardItems = getCardSession(session);
 
 		response.setResult(cardItems);
-		response.setCode("200");
+		response.setCode(HttpStatus.OK.value());
 
 		return response;
 	}
@@ -57,10 +58,10 @@ public class CardAction extends AbstractCardAction{
 			session.setAttribute("cardItems", cardItems);
 
 			response.setResult(cardItems);
-			response.setCode("200");
+			response.setCode(HttpStatus.OK.value());
 		} else {
 
-			response.setCode("400");
+			response.setCode(HttpStatus.BAD_REQUEST.value());
 		}
 
 		return response;
@@ -79,7 +80,7 @@ public class CardAction extends AbstractCardAction{
 			cardItems.getProducts().remove(productId);
 		}
 
-		response.setCode("201");
+		response.setCode(HttpStatus.CREATED.value());
 		response.setResult(cardItems);
 
 		return response;
@@ -102,7 +103,7 @@ public class CardAction extends AbstractCardAction{
 			}
 		}
 
-		response.setCode("201");
+		response.setCode(HttpStatus.CREATED.value());
 		response.setResult(cardItems);
 
 		return response;

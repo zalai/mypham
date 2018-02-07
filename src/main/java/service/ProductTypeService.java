@@ -9,9 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import dao.ProductTypeDao;
 import model.RstProducTypeDto;
 
-@Service("productTypeservice")
+@Service("productTypeService")
 @Transactional(readOnly = false)
-public class ProductTypeservice {
+public class ProductTypeService {
 
 	@Autowired
 	private ProductTypeDao productTypeDao;

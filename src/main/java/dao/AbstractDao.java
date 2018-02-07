@@ -12,13 +12,16 @@ import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class AbstractDao<PK extends Serializable, T> {
-	
-	private final Class<T> persistentClass;
+public abstract class AbstractDao<KEY extends Serializable, MODEL> {
+
+	protected Criteria criteria;
+	protected Query query;
+
+	private final Class<MODEL> persistentClass;
 	
 	@SuppressWarnings("unchecked")
 	public AbstractDao(){
-		this.persistentClass =(Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
+		this.persistentClass =(Class<MODEL>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
 	}
 	
 	@Autowired
@@ -29,21 +32,21 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<T> getList() {
+	public List<MODEL> getList() {
 
 		return createEntityCriteria().list();
 	}
 
 	@SuppressWarnings("unchecked")
-	public T getByKey(PK key) {
-		return (T) getSession().get(persistentClass, key);
+	public MODEL getByKey(KEY key) {
+		return (MODEL) getSession().get(persistentClass, key);
 	}
 
-	public void persist(T entity) {
+	public void persist(MODEL entity) {
 		getSession().persist(entity);
 	}
 
-	public void delete(T entity) {
+	public void delete(MODEL entity) {
 		getSession().delete(entity);
 	}
 	

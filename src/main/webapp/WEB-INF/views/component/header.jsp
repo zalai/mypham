@@ -17,7 +17,7 @@
 	<div class="search">
 		<div class="row">
 			<div class="col-md-3">
-				<a href="http://banmypham.vn/"> <img
+				<a href="${contextPath}"> <img
 					src="${contextPath}/resources/images/system/logo.png" alt="banmypham.vn">
 				</a>
 			</div>

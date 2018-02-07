@@ -23,7 +23,7 @@ import model.BreadcrumbCustomDto;
 import model.RstProducTypeDto;
 import model.RstProductDto;
 import service.ProductService;
-import service.ProductTypeservice;
+import service.ProductTypeService;
 
 @Controller
 public class IndexAction {
@@ -32,7 +32,7 @@ public class IndexAction {
 	private ProductService productService;
 
 	@Autowired
-	private ProductTypeservice productTypeservice;
+	private ProductTypeService productTypeService;
 
 	private List<RstProductDto> productList;
 	private List<RstProductDto> productNewList;
@@ -44,7 +44,7 @@ public class IndexAction {
 	public String index(Model model) {
 
 		// find product type
-		productTypeList = productTypeservice.getAllProductType();
+		productTypeList = productTypeService.getAllProductType();
 
 		// Find product type by priority
 		productNewList = productService.findByPriority(true);

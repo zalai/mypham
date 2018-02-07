@@ -53,6 +53,7 @@ public class RstProductDto implements java.io.Serializable {
 	public RstProductDto() {
 		
 	}
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 

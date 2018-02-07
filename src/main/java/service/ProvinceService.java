@@ -1,21 +1,23 @@
 package service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import dao.OrderDao;
-import model.RstOrderDto;
+import dao.ProvinceDao;
+import model.RstProvinceDto;
 
 @Service
 @Transactional
-public class OrderService {
+public class ProvinceService {
 
 	@Autowired
-	private OrderDao orderDao;
+	private ProvinceDao provinceDao;
 
-	public void insert(RstOrderDto orderDto) {
+	public List<RstProvinceDto> getProvices() {
 
-		orderDao.persist(orderDto);
+		return provinceDao.getList();
 	}
 }

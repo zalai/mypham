@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="${contextPath}/resources/css/index.css"/>
 
 	<jsp:include page="../common/js.jsp"></jsp:include>
+	<script type="text/javascript" src="${contextPath}/resources/js/card/order.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Đặt hàng</title>
 </head>
@@ -29,8 +30,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Địa chỉ giao hàng của quý khách</div>
 				<div class="panel-body">
-					<spring:url value="/order/confirm" var="orderConfirm"></spring:url>
-					<form:form class="form-horizontal" method="post" modelAttribute="orderForm" action="${orderConfirm}">
+					<form:form class="form-horizontal" method="post" modelAttribute="orderForm" action="${contextPath}/order/confirm">
 			
 						<spring:bind path="name">
 							<div class="form-group ${status.error ? 'has-error':''} ">
@@ -58,8 +58,8 @@
 							<label class="col-sm-3 control-label">Tỉnh/Thành phố</label>
 							<div class="col-sm-9">
 								<form:select path="province" class="form-control">
-									<form:option value="none" label="Vui lòng chọn"></form:option>
-									<form:options items="${provinceList}" ></form:options>
+									<form:option value="" label="Vui lòng chọn"></form:option>
+									<form:options items="${provinceList}" itemLabel="name" itemValue="provinceId"></form:options>
 								</form:select>
 								<form:errors path="province" class="control-label" ></form:errors>
 							</div>
@@ -71,10 +71,10 @@
 							<label class="col-sm-3 control-label">Quận/huyện</label>
 							<div class="col-sm-9">
 								<form:select path="district" class="form-control" >
-									<form:option value="none" label="Vui lòng chọn"></form:option>
+									<form:option value="" label="Vui lòng chọn"></form:option>
 									<%-- <form:options items="${districtList}" ></form:options> --%>
 								</form:select>
-								<form:errors path="province" class="control-label" ></form:errors>
+								<form:errors path="district" class="control-label" ></form:errors>
 							</div>
 						</div>
 						</spring:bind>
@@ -84,7 +84,7 @@
 							<label class="col-sm-3 control-label">Phường, xã</label>
 							<div class="col-sm-9">
 								<form:select path="village" class="form-control">
-									<form:option value="none" label="Vui lòng chọn"></form:option>
+									<form:option value="" label="Vui lòng chọn"></form:option>
 									<%-- <form:options items="${provinceList}" ></form:options> --%>
 								</form:select>
 								<form:errors path="village" class="control-label" ></form:errors>
@@ -93,7 +93,7 @@
 						</spring:bind>
 
 						<spring:bind path="address">
-						<div class="form-group">
+						<div class="form-group ${status.error ? 'has-error':''}">
 							<label class="col-sm-3 control-label">Địa chỉ nhận hàng</label>
 							<div class="col-sm-9">
 								<form:textarea path="address" rows="3" maxlength="255" class="form-control"
@@ -104,7 +104,7 @@
 						</spring:bind>
 
 						<spring:bind path="phone">
-						<div class="form-group">
+						<div class="form-group ${status.error ? 'has-error':''}">
 							<label class="col-sm-3 control-label">Điện thoại di động</label>
 							<div class="col-sm-9">
 								<form:input path="phone" rows="5" class="form-control"

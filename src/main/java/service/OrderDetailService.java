@@ -4,18 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import dao.OrderDao;
-import model.RstOrderDto;
+import dao.OrderDetailDao;
+import model.RstOrderDetailDto;
 
 @Service
 @Transactional
-public class OrderService {
+public class OrderDetailService {
 
 	@Autowired
-	private OrderDao orderDao;
+	private OrderDetailDao orderDetailDao;
 
-	public void insert(RstOrderDto orderDto) {
+	public void insert(RstOrderDetailDto orderDetailDto) {
 
-		orderDao.persist(orderDto);
+		orderDetailDao.persist(orderDetailDto);
 	}
 }
