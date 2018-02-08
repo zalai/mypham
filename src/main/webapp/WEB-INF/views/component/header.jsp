@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 
 <%@include file="../common/commonTaglid.jsp" %>
+
+<%-- Print context-path is declared in commonTaglid. Use for url in js --%>
+<span id="context-path" class="hidden"><c:out value="${contextPath}"></c:out></span>
+
 <!-- Header top -->
 <header>
 	<div class="row">

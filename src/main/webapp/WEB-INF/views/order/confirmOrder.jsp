@@ -31,35 +31,36 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Xác nhận thông tin đặt hàng của bạn</div>
 				<div class="panel-body">
-					
-					<form:form class="form-horizontal" method="post" modelAttribute="orderForm" action="order/confirm">
+					<form:form class="form-horizontal" method="post"
+						modelAttribute="orderForm" action="${contextPath}/order/save">
 						<div class="row">
-							<div class="col-md-3">Tên của bạn: </div>
+							<div class="col-md-3">Tên của bạn:</div>
 							<div class="col-md-9">${orderForm.name}</div>
 						</div>
 						<div class="row">
-							<div class="col-md-3">Email: </div>
+							<div class="col-md-3">Email:</div>
 							<div class="col-md-9">${orderForm.email}</div>
 						</div>
 						<div class="row">
-							<div class="col-md-3">Địa chỉ nhận hàng </div>
+							<div class="col-md-3">Địa chỉ nhận hàng</div>
 							<div class="col-md-9">${orderForm.address}</div>
 						</div>
 						<div class="row">
-							<div class="col-md-3">Số điện thoại </div>
+							<div class="col-md-3">Số điện thoại</div>
 							<div class="col-md-9">${orderForm.phone}</div>
 						</div>
-						<form:hidden path="name"/>
-						<form:hidden path="email"/>
-						<form:hidden path="province"/>
-						<form:hidden path="district"/>
-						<form:hidden path="village"/>
-						<form:hidden path="address"/>
-						<form:hidden path="phone"/>
-						<spring:bind path="province"/>
+						<form:hidden path="name" />
+						<form:hidden path="email" />
+						<form:hidden path="province" />
+						<form:hidden path="district" />
+						<form:hidden path="village" />
+						<form:hidden path="address" />
+						<form:hidden path="phone" />
+						<spring:bind path="province" />
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10 ">
-								<button type="submit" class="btn btn-primary pull-right">Xác nhận</button>
+								<button type="submit" class="btn btn-primary pull-right">Xác
+									nhận</button>
 							</div>
 						</div>
 					</form:form>

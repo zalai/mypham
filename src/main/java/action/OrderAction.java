@@ -1,5 +1,6 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,7 +62,10 @@ public class OrderAction extends AbstractCardAction {
 	@Autowired
 	private VillageService villageService;
 
+	// List for pulldow
 	private List<RstProvinceDto> provinceList;
+	private List<RstDistrictDto> districtList;
+	private List<RstVillageDto> villageList;
 
 	@RequestMapping(value = "")
 	public String index(Model model, HttpSession session) {
@@ -72,7 +77,7 @@ public class OrderAction extends AbstractCardAction {
 
 			model.addAttribute("orderForm", orderForm);		
 
-			initPulldow(model);
+			initPulldow(model, orderForm);
 
 			return "order/order";
 		}
@@ -90,11 +95,11 @@ public class OrderAction extends AbstractCardAction {
 
 			if (result.hasErrors()) {
 
+				initPulldow(model, orderForm);
 				return "order/order";
 			}
 
 			model.addAttribute("orderForm", orderForm);
-			initPulldow(model);
 
 			return "order/confirmOrder";
 		}
@@ -102,7 +107,7 @@ public class OrderAction extends AbstractCardAction {
 		return "redirect:/";
 	}
 
-	@RequestMapping(value = "complete", method = RequestMethod.POST)
+	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String complete(Model model, @Valid OrderForm orderForm,
 			BindingResult result, HttpSession session) {
 
@@ -130,36 +135,48 @@ public class OrderAction extends AbstractCardAction {
 			orderDto.setProvinceDto(new RstProvinceDto(orderForm.getProvince()));
 			orderDto.setDistrictDto(new RstDistrictDto(orderForm.getDistrict()));
 			orderDto.setVillageDto(new RstVillageDto(orderForm.getVillage()));
-
 			orderDto.setState(Constant.ACTIVE);
 			orderDto.setTotalPrice(cardItems.getTotalPrice());
+			orderDto.setOrderDetailDtos(getDetailOrder(cardItems, orderDto));
 
-			// Insert order detail
-			Set<RstOrderDetailDto> orderDetailDtos = new HashSet<RstOrderDetailDto>();
-			RstOrderDetailDto orderDetailDto;
-			RstProductDto productDto;
-
-			for(Map.Entry<Integer, RstProductDto> entry: cardItems.getProducts().entrySet()) {
-
-				// Get product in card
-				productDto = entry.getValue();
-
-				// Get 
-				orderDetailDto = new RstOrderDetailDto();
-				orderDetailDto.setMaSp(productDto.getMaSp());
-				orderDetailDto.setGia(productDto.getGiaBan());
-				orderDetailDto.setSoLuong(productDto.getSoLuong());
-				orderDetailDto.setOrderDto(orderDto);
-				orderDetailDtos.add(orderDetailDto);
-			}
-
-			orderDto.setOrderDetailDtos(orderDetailDtos);
 			orderService.insert(orderDto);
 
-			return "order/confirmOrder";
+			return "redirect:complete";
 		}
 
 		return "redirect:/";
+	}
+
+	@RequestMapping(value = "complete")
+	public String complete(HttpSession session) {
+
+		session.invalidate();
+
+		return "order/completeOrder";
+	}
+
+	private Set<RstOrderDetailDto> getDetailOrder(CardDto cardDto, RstOrderDto orderDto) {
+
+		// Insert order detail
+		Set<RstOrderDetailDto> orderDetailDtos = new HashSet<RstOrderDetailDto>();
+		RstOrderDetailDto orderDetailDto;
+		RstProductDto productDto;
+
+		for(Map.Entry<Integer, RstProductDto> entry: cardDto.getProducts().entrySet()) {
+
+			// Get product in card
+			productDto = entry.getValue();
+
+			// Create order detail
+			orderDetailDto = new RstOrderDetailDto();
+			orderDetailDto.setMaSp(productDto.getMaSp());
+			orderDetailDto.setGia(productDto.getGiaBan());
+			orderDetailDto.setSoLuong(productDto.getSoLuong());
+			orderDetailDto.setOrderDto(orderDto);
+			orderDetailDtos.add(orderDetailDto);
+		}
+
+		return orderDetailDtos;
 	}
 
 	@RequestMapping(value = "district/{provinceId}", method = RequestMethod.POST)
@@ -186,10 +203,26 @@ public class OrderAction extends AbstractCardAction {
 		return responseDto;
 	}
 
-	private void initPulldow(Model model) {
+	private void initPulldow(Model model, OrderForm orderForm) {
 
+		// Init for pulldow province
 		provinceList = provinceService.getProvices();
+
+		// Incase pulldow province is selected then init for district pulldown
+		if(!StringUtils.isEmpty(orderForm.getProvince())) {
+
+			districtList = districtService.getByProvinceID(orderForm.getProvince());
+		}
+
+		// Incase pulldow district is selected then init for district pulldown
+		if(!StringUtils.isEmpty(orderForm.getDistrict())) {
+
+			villageList = villageService.getByDistrictId(orderForm.getDistrict());
+		}
+
 		model.addAttribute("provinceList", provinceList);
+		model.addAttribute("districtList", districtList);
+		model.addAttribute("villageList", villageList);
 	}
 
 }

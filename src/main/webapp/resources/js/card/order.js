@@ -3,8 +3,8 @@ $(document).ready(function(){
 	var is_busy = false;
 	var waiting_text = "<option value=''>Đang tải...</option>";
 
-	var URL_GET_DISTRICT = "order/district/";
-	var URL_GET_VILLAGE = "order/village/";
+	var URL_GET_DISTRICT = context_path + "/order/district/";
+	var URL_GET_VILLAGE = context_path + "/order/village/";
 
 	$('#orderForm select[name="province"]').on('change', function(){
 

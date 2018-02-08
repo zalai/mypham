@@ -72,7 +72,7 @@
 							<div class="col-sm-9">
 								<form:select path="district" class="form-control" >
 									<form:option value="" label="Vui lòng chọn"></form:option>
-									<%-- <form:options items="${districtList}" ></form:options> --%>
+									<form:options items="${districtList}" itemLabel="name" itemValue="districtId" ></form:options>
 								</form:select>
 								<form:errors path="district" class="control-label" ></form:errors>
 							</div>
@@ -85,7 +85,7 @@
 							<div class="col-sm-9">
 								<form:select path="village" class="form-control">
 									<form:option value="" label="Vui lòng chọn"></form:option>
-									<%-- <form:options items="${provinceList}" ></form:options> --%>
+									<form:options items="${villageList}" itemLabel="name" itemValue="id"></form:options>
 								</form:select>
 								<form:errors path="village" class="control-label" ></form:errors>
 							</div>

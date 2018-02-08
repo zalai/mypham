@@ -19,7 +19,7 @@ public class OrderForm {
 	@Email(regexp = Constant.EMAIL_PATTERN)
 	private String email;
 
-	@Pattern(regexp = "(\\w*\\d\\w*)")
+	@Pattern(regexp = ".*\\d\\w*.*")
 	private String address;
 
 	@NotEmpty

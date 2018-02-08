@@ -48,7 +48,7 @@
 				</ul>
 			</div>
 			<div class="col-md-4 wow bounceInUp clearfix animated">
-				<iframe name="f3c49309b4983f8" width="383px" height="300px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:page Facebook Social Plugin" src="https://www.facebook.com/v2.5/plugins/page.php?adapt_container_width=true&amp;app_id=821062387963264&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FfTmIQU3LxvB.js%3Fversion%3D42%23cb%3Df2e20314bd857d8%26domain%3Dbanmypham.vn%26origin%3Dhttp%253A%252F%252Fbanmypham.vn%252Ff351a63b35f32d8%26relation%3Dparent.parent&amp;container_width=384&amp;height=300&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fbanmyphamonline%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;width=383" style="border: none; visibility: visible; width: 383px; height: 230px;" class=""></iframe>
+				<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fquatangtrungpham%2F&tabs=timeline&width=383&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="383" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 			</div>
 		</div>
 	</div>

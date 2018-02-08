@@ -8,3 +8,4 @@
 <script type="text/javascript" src="${contextPath}/resources/js/wow.min.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/js/handlebars-v4.0.11.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/js/common-function.js"></script>
+<script type="text/javascript"> var context_path = "${contextPath}" </script>
