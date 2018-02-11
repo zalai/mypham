@@ -8,7 +8,10 @@ import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.AliasToBeanConstructorResultTransformer;
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Component;
+
+import com.sun.org.apache.xml.internal.security.transforms.Transforms;
 
 import enums.Constant;
 import model.RstProductDto;
@@ -116,12 +119,23 @@ public class ProductDao extends AbstractDao<Integer, RstProductDto> {
 
 	public RstProductDto findProductByID(Integer maSp) {
 
-		criteria = createEntityCriteria();
+/*		criteria = createEntityCriteria();
 		criteria.add(Restrictions.idEq(maSp));
 		criteria.setProjection(projectionList1);
 		criteria.setResultTransformer(new AliasToBeanConstructorResultTransformer(RstProductDto.class.getConstructors()[0]));
 
-		return (RstProductDto)criteria.uniqueResult();
+		return (RstProductDto)criteria.uniqueResult();*/
+		String sql = "SELECT new RstProductDto(maSp, tenSp, moTa, noiSx, mauSac, hinh, giaBan)"
+				+ " FROM RstProductDto"
+				+ " WHERE"
+				+ " remove = :isRemove"
+				+ " AND maSp like :maSp";
+
+		query = createQuery(sql);
+		query.setParameter("isRemove", false);
+		query.setParameter("maSp", maSp);
+
+		return (RstProductDto)query.uniqueResult();
 	}
 
 	private void settingRecord(Query query, int offset) {
