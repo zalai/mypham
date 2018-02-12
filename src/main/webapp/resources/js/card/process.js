@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-	var URL_DELETE_CARD = "card/delete/";
-	var URL_ADD_CARD = "card/add/";
-	var URL_MINUSE_CARD = "card/minuse/";
-	var URL_SHOW_CARD = "card/show";
+	var URL_DELETE_CARD = context_path + "/card/delete/";
+	var URL_ADD_CARD = context_path + "/card/add/";
+	var URL_MINUSE_CARD = context_path + "/card/minuse/";
+	var URL_SHOW_CARD = context_path + "/card/show";
 
 	var is_busy = false;
 

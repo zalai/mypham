@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 	// Prevent double click when requesting
 	var is_busy = false;
-	var UrlShowProductDetail = "showProductDetail/";
+	var URL_SHOW_PRODUCT_DETAIL = context_path + "/showProductDetail/";
 
 	$(document).on("click", ".showProductDetail", function(e){
 
@@ -28,7 +28,7 @@ $(document).ready(function(){
 		$.ajax({
 			type : "POST",
 			contentType : "text",
-			url : UrlShowProductDetail + productId,
+			url : URL_SHOW_PRODUCT_DETAIL + productId,
 			success : function(data) {
 
 				// Print data if result in data is not null

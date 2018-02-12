@@ -12,7 +12,7 @@ $(document).ready(function() {
 	var is_busy = false;
 
 	// Url to request
-	var UrlSearch = "search/";
+	var URL_SEARCH = context_path + "/search/";
 
 	// Create effect for show item
 	new WOW().init();
@@ -48,7 +48,7 @@ $(document).ready(function() {
 		$.ajax({
 			type : "POST",
 			contentType : "text",
-			url : UrlSearch + $productType + "/" + $pageSet,
+			url : URL_SEARCH + $productType + "/" + $pageSet,
 			success : function(data) {
 
 				// Print data if result in data is not null
