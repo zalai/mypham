@@ -66,7 +66,7 @@ public class RstProductDto implements java.io.Serializable {
 		this.maSp = maSp;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MaLoai", nullable = false)
 	public RstProducTypeDto getRstProducTypeDto() {
 		return rstProducTypeDto;

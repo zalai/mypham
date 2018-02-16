@@ -2,5 +2,6 @@
 <sitemesh>
 	<mapping decorator="/WEB-INF/views/decorators/main-decoration.jsp" />
 	<mapping path="/order*" decorator="/WEB-INF/views/decorators/order-decoration.jsp"/>
-	<!-- <mapping path="/order/*"  exclue="true"/> -->
+	<mapping path="/login*" exclue="true"/>
+	<mapping path="/admin*" decorator="/WEB-INF/views/decorators/admin-decoration.jsp"/>
 </sitemesh>

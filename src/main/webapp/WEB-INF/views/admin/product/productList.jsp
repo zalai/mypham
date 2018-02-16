@@ -7,7 +7,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<jsp:include page="../../common/script.jsp"></jsp:include>
+	<jsp:include page="../../common/css.jsp"></jsp:include>
+
+	<jsp:include page="../../common/js.jsp"></jsp:include>
 	<title>Quản lí sản phẩm</title>
 </head>
 <body>

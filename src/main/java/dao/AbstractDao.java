@@ -16,6 +16,7 @@ public abstract class AbstractDao<KEY extends Serializable, MODEL> {
 
 	protected Criteria criteria;
 	protected Query query;
+	protected String sql;
 
 	private final Class<MODEL> persistentClass;
 	
