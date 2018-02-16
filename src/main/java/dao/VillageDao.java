@@ -2,8 +2,6 @@ package dao;
 
 import java.util.List;
 
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.transform.AliasToBeanConstructorResultTransformer;
 import org.springframework.stereotype.Component;
 
 import model.RstVillageDto;
@@ -13,13 +11,15 @@ public class VillageDao extends AbstractDao<String, RstVillageDto>{
 
 	public List<RstVillageDto> getByDistrictId(String districtId) {
 
-		criteria = super.createEntityCriteria();
+		sql = "SELECT new RstVillageDto(id, name)"
+				+ " FROM RstVillageDto"
+				+ " WHERE districtId = :provinceId";
 
-		criteria.setProjection(columns("id", "name"));
-		criteria.add(Restrictions.eq("districtId", districtId));
-		criteria.setResultTransformer(new AliasToBeanConstructorResultTransformer(RstVillageDto.class.getConstructors()[1]));
+		query = createQuery(sql);
+		query.setParameter("districtId", districtId);
 
-		return criteria.list();
+		return query.list();
+		
 	}
 
 }
