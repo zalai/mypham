@@ -13,7 +13,7 @@ public class VillageDao extends AbstractDao<String, RstVillageDto>{
 
 		sql = "SELECT new RstVillageDto(id, name)"
 				+ " FROM RstVillageDto"
-				+ " WHERE districtId = :provinceId";
+				+ " WHERE districtId = :districtId";
 
 		query = createQuery(sql);
 		query.setParameter("districtId", districtId);
