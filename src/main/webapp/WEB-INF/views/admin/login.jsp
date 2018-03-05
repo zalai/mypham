@@ -1,63 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <%@ include file="../common/commonTaglid.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="../common/script.jsp"></jsp:include>
-<title>Login page</title>
+<jsp:include page="../common/css.jsp"></jsp:include>
+<link rel="stylesheet" href="${contextPath}/resources/css/login.css">
+
+<%-- <jsp:include page="../common/js.jsp"></jsp:include> --%>
+<title>Đăng nhập</title>
 </head>
 <body>
-<div class="container">
-	<div class="col-sm-6 col-sm-offset-3">
-		<div class="panel panel-primary" style="min-width: 500px; max-width: 500px;">
-			<div class="panel-heading text-center">Login Form</div>
-			<div class="panel-body" >
-			<p>${param.error}</p>
-				<spring:url value="/login" var="loginUrl"></spring:url>
-
-					<c:if test="${param.error != null}">
-						<div class="alert alert-danger">
-							<p>Invalid username and password.</p>
-						</div>
-					</c:if>
-					<c:if test="${param.logout != null}">
-						<div class="alert alert-success">
-							<p>You have been logged out successfully.</p>
-						</div>
-					</c:if>
-					<form class="form-horizontal" method="post" action="${loginUrl}">
-
-						<div class="form-group">
-						<label class="control-label col-sm-2" for="name">User</label>
-						<div class="col-sm-9">
-							<input name="ssoId" path="ssoId" class="form-control"  placeholder="Enter name"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="name">Pass</label>
-						<div class="col-sm-9">
-							<input name="password" path="password" class="form-control" placeholder="Enter name"/>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-9 ">
-							<button type="submit" class="btn btn-primary btn-block">Login</button>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-9">
-							<label class="checkbox-inline"><input type="checkbox" path="sex" value="true" />Remember me</label>
-						</div>
-					</div>
-
-					<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
-				</form>
-			</div>
+	<div class="container">
+		<div class="card card-container">
+			<img id="profile-img" class="profile-img-card"
+				src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+			<p id="profile-name" class="profile-name-card"></p>
+			<form class="form-signin">
+				<span id="reauth-email" class="reauth-email"></span>
+				<input
+					type="email" id="inputEmail" class="form-control"
+					placeholder="Email address" required autofocus> <input
+					type="password" id="inputPassword" class="form-control"
+					placeholder="Password" required>
+				<div id="remember" class="checkbox">
+					<label> <input type="checkbox" value="remember-me">
+						Remember me
+					</label>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block btn-signin"
+					type="submit">Sign in</button>
+			</form>
+			<!-- /form -->
+			<a href="#" class="forgot-password"> Forgot the password? </a>
 		</div>
+		<!-- /card-container -->
 	</div>
-</div>
+	<!-- /container -->
 </body>
 </html>
