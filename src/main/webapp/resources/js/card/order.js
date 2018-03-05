@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	var is_busy = false;
 	var waiting_text = "<option value=''>Đang tải...</option>";
+	var please_choice_text = "<option value=''>Vui lòng chọn</option>";
 
 	var URL_GET_DISTRICT = context_path + "/order/district/";
 	var URL_GET_VILLAGE = context_path + "/order/village/";
@@ -18,6 +19,9 @@ $(document).ready(function(){
 		// Append waiting text
 		$districtSelect.html(waiting_text);
 
+		// Append please choice text
+		$('#orderForm select[name="village"]').html(please_choice_text);
+
 		// Busy
 		is_busy = true;
 
@@ -30,7 +34,7 @@ $(document).ready(function(){
 
 				console.log(data);
 
-				var optionText = "<option value=''>Vui lòng chọn</option>";
+				var optionText = please_choice_text;
 				for(var i = 0; i < data.result.length; i++) {
 
 					optionText += "<option value='" + data.result[i].districtId + "'>" + data.result[i].name + "</option>";
@@ -74,7 +78,7 @@ $(document).ready(function(){
 
 				console.log(data);
 
-				var optionText = "<option value=''>Vui lòng chọn</option>";
+				var optionText = please_choice_text;
 				for(var i = 0; i < data.result.length; i++) {
 
 					optionText += "<option value='" + data.result[i].id + "'>" + data.result[i].name + "</option>";
